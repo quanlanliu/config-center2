@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    hostname: dev
+  client:
+    ##检索服务
+    fetch-registry: false
+    ##是否将自己注册到注册中心
+    register-with-eureka: true
+    ##客户端默认去这个地址去找注册中心（可在此配置集群）
+    service-url:
+            defaultZone: http://localhost:10002/eureka/,http://localhost:10001/eureka/
+#      defaultZone: http://localhost:10001/eureka/,http://localhost:20001/eureka/,http://localhost:20002/eureka/
+  server:
+    ##当eureka启动时，不能从集群节点获取instance注册信息，应该等待多久
+    wait-time-in-ms-when-sync-empty: 0
+    enable-self-preservation: false
+    ##eureka多久时间更新一次数据
+    peer-eureka-nodes-update-interval-ms: 100000
